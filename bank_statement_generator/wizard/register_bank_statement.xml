@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="form_register_bank_statement">
+      <field name="name">form_register_bank_statement</field>
+      <field name="model">register.bank.statement</field>
+      <field name="arch" type="xml">
+        <form string="Register Bank Statement">
+          <separator string="Register Bank Statement"/>
+          <group col='4'>
+            <field name="statement_name" strign="Statement Name"/>
+            <field name="bank_journal" string="Bank" required="True"/>
+            <field name="related_moves" invisible="1"/>
+          </group>
+          <footer>
+            <button string="Generate Statement"
+		    name="create_bank_statement"
+		    type="object"
+		    class="btn-primary"/>
+            <button class="btn-secondary" special="cancel" string="Cancel"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+    
+  </data>
+</odoo>

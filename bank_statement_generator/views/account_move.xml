@@ -1,0 +1,37 @@
+<odoo>
+  <record id="form_account_move_inh" model="ir.ui.view">
+    <field name="name">form.account.move.inh</field>
+    <field name="model">account.move</field>
+    <field name="inherit_id" ref="account.view_move_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//form/header" position="inside">
+	<field name="bank_states_count" invisible="1"/>
+        <button name="get_statements_entries"
+		string="See Statements"
+		class="oe_highlight"
+                type="object"
+		groups="account.group_account_invoice"
+		attrs="{'invisible': [('bank_states_count', '=', 0)]}"/>
+        <button name="register_bank_statement"
+		string="Register Bank Statement"
+		class="oe_highlight"
+                type="object"
+		groups="account.group_account_invoice"
+		context="{'done_from_butt':True}"
+                attrs="{'invisible': [('state', 'not in', ('posted'))]}"/>
+      </xpath>
+    </field>
+  </record>
+
+  <record id="generate_account_move_bank_statement" model="ir.actions.server">
+    <field name="name">Generate Bank Statement</field>
+    <field name="model_id" ref="account.model_account_move"/>
+    <field name="binding_model_id" ref="account.model_account_move"/>
+    <field name="binding_view_types">list</field>
+    <field name="state">code</field>
+    <field name="code">
+      if records:
+          action = model.register_bank_statement()
+    </field>
+  </record>
+</odoo>
