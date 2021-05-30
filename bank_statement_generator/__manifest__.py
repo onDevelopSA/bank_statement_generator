@@ -4,7 +4,7 @@
 # Part of onDevelop.SA. See LICENSE file for full copyright and licensing details.
 {
     'name': "Bank Statement Generator",
-    'summary': """Generate Bank Statements from partners invoices/bills.""",
+    'summary': """Generate Bank Statements from invoices/bills.""",
     'description': """
     Permit generate a bank statement form an invoice/bill or from many
     invoices/bills using the related payments.
@@ -18,6 +18,7 @@
     'price': 32,
     'currency': 'USD',
     'depends': ['base', 'account'],
+    'images': ['static/description/bank_statement_cover.png'],
     'data': [
         'security/ir.model.access.csv',
         'views/account_move.xml',
